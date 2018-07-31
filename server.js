@@ -27,7 +27,7 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> { res.send(database.users) })
+app.get('/', (req, res)=> { res.send('it is working!') })
 app.post('/signin', signin.handleSignin(db, bcrypt))
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
@@ -41,6 +41,9 @@ app.listen(process.env.PORT || 3000, ()=> {
 
 //without heroku (running on port 3000)
 /*
+app.get('/', (req, res)=> { res.send(database.users) })
+
+
 app.listen(3000, ()=> {
   console.log('app is running on port 3000');
 })
