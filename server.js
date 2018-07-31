@@ -12,10 +12,8 @@ const image = require('./controllers/image');
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    user : 'cstha2',
-    password : 'science',
-    database : 'smart-brain'
+    connectionString : process.env.DATABSE_URL,
+   	ssl:true,
   }
 });
 
@@ -41,6 +39,18 @@ app.listen(process.env.PORT || 3000, ()=> {
 
 //without heroku (running on port 3000)
 /*
+
+const db = knex({
+  client: 'pg',
+  connection: {
+    host : '127.0.0.1',
+    user : 'cstha2',
+    password : 'science',
+    database : 'smart-brain'
+  }
+});
+
+
 app.get('/', (req, res)=> { res.send(database.users) })
 
 
